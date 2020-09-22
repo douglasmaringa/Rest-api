@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 let Todo = require('./todo.model')
 let port = process.env.PORT || 3000;
 
 app.use(cors());
-
-const connection_url = 'mongodb+srv://douglas2:pass@cluster0-oxngv.mongodb.net/todos?retryWrites=true&w=majority'
+app.use(bodyParser.json())
+const connection_url = 'mongodb+srv://douglas2:pass@cluster0-oxngv.mongodb.net/todo?retryWrites=true&w=majority'
 
 mongoose.connect(connection_url, { useNewUrlParser: true });
 const connection = mongoose.connection;
