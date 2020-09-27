@@ -38,7 +38,21 @@ app.get('/', (req,res)=>{
             })
         
     })
+app.post("/payments/create", async (request, response) => {
+  const total = request.query.total;
 
+  console.log("Payment request received BOOM!! FOR THIS AMOUNT", total);
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: total,
+    currency: "usd",
+  });
+
+  // OK, created something
+  response.status(201).send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
 
 app.listen(port,()=>{
     console.log(`listening on http://localhost:${port}`)
