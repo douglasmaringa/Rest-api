@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
-const stripe = require("stripe")("sk_test_LQ7kUSQKXdfMSVm2MwpGczgS00QjrRZswN");
+
 let Todo = require('./todo.model')
 let port = process.env.PORT || 3000;
 
